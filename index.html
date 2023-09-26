@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <style>
+        .field-set{
+            padding-bottom: 1rem;
+        }
+        .radio-sec label{
+            padding-right: 1rem;
+        }
+    </style>
+    <div>
+        <h3>
+            Register User
+        </h3>
+        <form action="save_data.php" method="post" id="register-form" enctype="multipart/form-data">
+            <div class="field-set">
+                <label class="form-label" for="full-name">Name</label><br/>
+                <input type="text" name="fullName" id="full-name" placeholder="full name" required />
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="email">Email</label><br/>
+                <input type="email" name="email" id="email" placeholder="gmail id" required />
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="password">Password</label><br/>
+                <input type="password" name="password" id="password" placeholder="8 characters" onchange="check_password()" required />
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="confirm-password">Confirm Password</label><br/>
+                <input type="password" name="confirmPassword" id="confirm-password" placeholder="8 characters" onchange="check_password()" required />
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="dob">Date of Birth</label><br/>
+                <input type="date" name="dob" id="dob" />
+            </div>
+            <div class="field-set radio-sec">
+                <label class="form-label">Gender</label><br/>
+                <label for="male">
+                    <input type="radio" name="gender" id="male" value="male" checked />
+                    Male
+                </label>
+                <label for="female">
+                    <input type="radio" name="gender" id="female" value="female" />
+                    Female
+                </label>
+                <label for="other">
+                    <input type="radio" name="gender" id="other" value="other" />
+                    Other
+                </label>
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="photo">Insert your photo:</label><br/>
+                <input type="file" name="photo" id="photo" accept="image/png,image/jpeg">
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="resume">Insert your photo:</label><br/>
+                <input type="file" name="resume" id="resume" accept="application/pdf,application/doc">
+            </div>
+            <div class="field-set">
+                <label class="form-label" for="security-question">Security Question</label><br/>
+                <select name="securityQuestion" id="security-question" required>
+                    <option value="">Select</option>
+                    <option value="What is your pets name?">What is your pets name?</option>
+                    <option value="What is your favorite sport?">What is your favorite sport?</option>
+                </select>
+                <br/>
+                <textarea name="securityAnswer" id="security-answer" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="field-set">
+                <label for="terms"><input type="checkbox" name="terms" id="terms" value="agree" required> I agree terms and conditions</label>
+            </div>
+            <div class="field-set">
+                <button type="submit" id="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function check_password() {
+            let password = document.getElementById("password").value;
+            let cpassword = document.getElementById("confirm-password").value;
+            if(password != cpassword){
+                document.getElementById("submit-btn").disabled = true;
+            }else{
+                document.getElementById("submit-btn").disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
